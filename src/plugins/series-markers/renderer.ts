@@ -11,6 +11,7 @@ import { SeriesItemsIndexesRange, TimedValue } from '../../model/time-data';
 import { SeriesMarkerZOrder } from './options';
 import { drawArrow, hitTestArrow } from './series-markers-arrow';
 import { drawCircle, hitTestCircle } from './series-markers-circle';
+import { drawCircleWithText, hitTestCircleWithText } from './series-markers-circle-with-text';
 import { drawSquare, hitTestSquare } from './series-markers-square';
 import { drawText, hitTestText } from './series-markers-text';
 import { SeriesMarkerShape } from './types';
@@ -32,6 +33,10 @@ export interface SeriesMarkerRendererDataItem extends TimedValue {
 	internalId: number;
 	externalId?: string;
 	text?: SeriesMarkerText;
+	innerText?: SeriesMarkerText;
+	innerTextColor?: string;
+	innerTextSize?: number;
+	tooltipText?: string;
 }
 
 export interface SeriesMarkerRendererData {
@@ -150,6 +155,9 @@ function drawShape(item: SeriesMarkerRendererDataItem, ctx: CanvasRenderingConte
 		case 'circle':
 			drawCircle(ctx, coordinates, item.size);
 			return;
+		case 'circleWithText':
+			drawCircleWithText(ctx, coordinates, item.size, item.innerText?.content, item.innerTextColor, item.innerTextSize);
+			return;
 		case 'square':
 			drawSquare(ctx, coordinates, item.size);
 			return;
@@ -178,6 +186,8 @@ function hitTestShape(item: SeriesMarkerRendererDataItem, x: Coordinate, y: Coor
 			return hitTestArrow(false, item.x, item.y, item.size, x, y);
 		case 'circle':
 			return hitTestCircle(item.x, item.y, item.size, x, y);
+		case 'circleWithText':
+			return hitTestCircleWithText(item.x, item.y, item.size, x, y);
 		case 'square':
 			return hitTestSquare(item.x, item.y, item.size, x, y);
 	}

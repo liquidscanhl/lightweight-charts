@@ -20,6 +20,8 @@ export function shapeSize(shape: SeriesMarkerShape, originalSize: number): numbe
 			return size(originalSize, 1);
 		case 'circle':
 			return size(originalSize, 0.8);
+		case 'circleWithText':
+			return size(originalSize, 1.0);
 		case 'square':
 			return size(originalSize, 0.7);
 	}

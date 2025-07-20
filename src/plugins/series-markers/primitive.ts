@@ -201,6 +201,9 @@ export class SeriesMarkersPrimitive<HorzScaleItem> implements ISeriesPrimitive<H
 				size: marker.size,
 				price: marker.price,
 				originalTime: marker.time,
+				innerText: marker.innerText,
+				innerTextColor: marker.innerTextColor,
+				innerTextSize: marker.innerTextSize,
 			};
 
 			if (

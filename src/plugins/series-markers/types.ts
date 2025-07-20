@@ -17,7 +17,7 @@ export type SeriesMarkerPosition = SeriesMarkerBarPosition | SeriesMarkerPricePo
 /**
  * Represents the shape of a series marker.
  */
-export type SeriesMarkerShape = 'circle' | 'square' | 'arrowUp' | 'arrowDown';
+export type SeriesMarkerShape = 'circle' | 'square' | 'arrowUp' | 'arrowDown' | 'circleWithText';
 
 /**
  * Represents a series marker.
@@ -59,6 +59,22 @@ interface SeriesMarkerBase<TimeType> {
 	 * Required when using {@link SeriesMarkerPricePosition} position type.
 	 */
 	price?: number;
+	/**
+	 * The optional inner text for circle markers (max 2 characters).
+	 */
+	innerText?: string;
+	/**
+	 * The optional color for inner text.
+	 */
+	innerTextColor?: string;
+	/**
+	 * The optional font size for inner text.
+	 */
+	innerTextSize?: number;
+	/**
+	 * The optional tooltip text to display on hover.
+	 */
+	tooltipText?: string;
 }
 
 export interface SeriesMarkerBar<TimeType> extends SeriesMarkerBase<TimeType> {

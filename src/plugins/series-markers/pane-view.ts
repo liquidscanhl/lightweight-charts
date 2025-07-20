@@ -259,6 +259,23 @@ export class SeriesMarkersPaneView<HorzScaleItem> implements IPrimitivePaneView 
 				};
 			}
 
+			if (marker.innerText && marker.shape === 'circleWithText') {
+				rendererItem.innerText = {
+					content: marker.innerText.substring(0, 2),
+					x: 0 as Coordinate,
+					y: 0 as Coordinate,
+					width: 0,
+					height: 0,
+				};
+				rendererItem.innerTextColor = marker.innerTextColor;
+				rendererItem.innerTextSize = marker.innerTextSize;
+			}
+
+			// Add tooltip text if available
+			if (marker.tooltipText) {
+				rendererItem.tooltipText = marker.tooltipText;
+			}
+
 			const dataAt = this._series.dataByIndex(marker.time, MismatchDirection.None);
 			if (dataAt === null) {
 				continue;
