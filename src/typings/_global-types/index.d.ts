@@ -16,3 +16,23 @@ declare const enum MouseEventButton {
 	Fourth = 3,
 	Fifth = 4,
 }
+
+/**
+ * Test failure event data type for node:test
+ */
+interface TestFail {
+	file: string;
+	name: string;
+	details: {
+		duration_ms: number;
+		error: Error;
+	};
+}
+
+/**
+ * Test stderr event data type for node:test
+ */
+interface TestStderr {
+	file: string;
+	message: string;
+}

@@ -22,5 +22,8 @@
 		"./helpers/**/*.ts",
 		"../../src/**/*.ts",
 		"./*.ts"
+	],
+	"exclude": [
+		"../../node_modules/@types/chai"
 	]
 }

@@ -11,5 +11,8 @@
 		"./plugins/**/*.ts",
 		"./index.ts",
 		"./standalone.ts"
+	],
+	"exclude": [
+		"../node_modules/@types/chai"
 	]
 }
